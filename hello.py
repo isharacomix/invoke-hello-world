@@ -25,5 +25,7 @@ if __name__ == "__main__":
     modulename = sys.argv[0].split('/')[-1].split('.')[0]
     configfile = "%s.json"%modulename
     commands = sys.argv[1:] or ['--list']
+    if commands == ['--help'] or commands == ['-h']:
+        commands = ['--list']
     args = ['invoke', '-c', modulename, '-f', configfile] + commands
     subprocess.call(args)
